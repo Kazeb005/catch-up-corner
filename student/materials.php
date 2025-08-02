@@ -97,97 +97,128 @@ $subjects_list = $subjects_stmt->fetch_all(MYSQLI_ASSOC);
     </style>
 </head>
 <body>
-    <div class="dashboard-nav">
-        <div>
+    <div class="dashboard-nav" id="dashboard-nav">
+        <div class="nav-title">
+            <img src="../assets/icon/book.svg" alt="book icon" height="32" width="32" class="">
             <span>Catch-Up corner</span>
         </div>
 
-        <div>
-            <nav>
+        <div class="nav-cont">
+            <nav class="nav-links">
                 <a href="#">Home</a>
                 <a href="#">About</a>
                 <a href="#">contact</a>
             </nav>
-            <div>
-                <i></i>
+            <div class="nav-profile">
+                <img src="../assets/icon/profile.svg" alt="icon" width="16" height="16">
                 <span><?php echo htmlspecialchars($_SESSION['fullname']); ?></span>
                 <span>student</span>
             </div>
-            <button><a href="../logout.php" class="btn">Logout</a></button>
+            <a href="../logout.php" class="btn-logout"><object type="image/svg+xml" data="../assets/icon/logout.svg" class="svg-icon" width="16" height="16" ></object>
+Logout</a>
         </div>
     </div>
 
     <div class="dashboard-header">
-        <h1>Welcome back, <?php echo htmlspecialchars($_SESSION['fullname']); ?>!</h1>
-        <p>Catch up on missed materials and stay on track with your studies</p>
-        
+        <div class="dashboard-header-cont">
+            <h1>Welcome back, <?php echo htmlspecialchars($_SESSION['fullname']); ?>!</h1>
+            <p>Catch up on missed materials and stay on track with your studies</p>
+            
+        </div>
     </div>
 
     <div class="dashboard-content">
-        <h2>Find Your Materials</h2>
-        <p>Search and filter through available study materials</p>
-        
-        <div class="filter-section">
-            <form method="GET" action="materials.php">
-                <div class="filter-group">
-                    <input type="text" name="search" placeholder="Search materials..." 
-                           value="<?php echo htmlspecialchars($search); ?>">
-                </div>
+        <div class="dashboard-content-head">
+
+            <div class="dashboard-content-intro">
+                <h3>Find Your Materials</h3>
+                <p>Search and filter through available study materials</p>
+            </div>
+            
+            <div class="filter-section">
+                <form method="GET" action="materials.php">
                 
-                <div class="filter-group">
-                    <select name="type">
-                        <option value="">All Types</option>
-                        <?php foreach ($types_list as $type): ?>
-                            <option value="<?php echo $type['type']; ?>"
-                                <?php echo $type_filter === $type['type'] ? 'selected' : ''; ?>>
-                                <?php echo ucfirst($type['type']); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <select name="subject">
-                        <option value="">All Subjects</option>
-                        <?php foreach ($subjects_list as $subject): ?>
-                            <option value="<?php echo $subject['subject']; ?>"
-                                <?php echo $subject_filter === $subject['subject'] ? 'selected' : ''; ?>>
-                                <?php echo ucfirst($subject['subject']); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                
-                <button type="submit" class="btn">Apply Filters</button>
-                <?php if (!empty($search) || !empty($type_filter) || !empty($subject_filter)): ?>
-                    <a href="materials.php" class="btn btn-outline">Clear Filters</a>
-                <?php endif; ?>
-            </form>
+                    <div class="filter-groups">
+                        <div class="filter-group">
+                            <input type="text" name="search" placeholder="Search materials..." 
+                                value="<?php echo htmlspecialchars($search); ?>">
+                        </div>
+                        
+                        <div class="filter-group">
+                            <select name="type">
+                                <option value="">All Types</option>
+                                <?php foreach ($types_list as $type): ?>
+                                    <option value="<?php echo $type['type']; ?>"
+                                        <?php echo $type_filter === $type['type'] ? 'selected' : ''; ?>>
+                                        <?php echo ucfirst($type['type']); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <select name="subject">
+                                <option value="">All Subjects</option>
+                                <?php foreach ($subjects_list as $subject): ?>
+                                    <option value="<?php echo $subject['subject']; ?>"
+                                        <?php echo $subject_filter === $subject['subject'] ? 'selected' : ''; ?>>
+                                        <?php echo ucfirst($subject['subject']); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                    </div>
+                    
+                    <button type="submit" class="btn">Apply Filters</button>
+                    <?php if (!empty($search) || !empty($type_filter) || !empty($subject_filter)): ?>
+                        <a href="materials.php" class="btn btn-outline">Clear Filters</a>
+                    <?php endif; ?>
+                </form>
+            </div>
+
         </div>
 
-        <h2>Available Materials (<?php echo count($materials); ?>)</h2>
-        
-        <?php if (empty($materials)): ?>
-            <div class="alert alert-info">No materials found matching your criteria</div>
-        <?php else: ?>
-            <?php foreach ($materials as $material): ?>
-            <div class="material-card">
-                <a href="download.php?id=<?php echo $material['id']; ?>" class="btn download-btn">Download</a>
-                
-                <h3><?php echo htmlspecialchars($material['title']); ?></h3>
-                <p><strong><?php echo ucfirst($material['type']); ?> - <?php echo ucfirst($material['subject']); ?></strong></p>
-                <p><?php echo htmlspecialchars($material['description']); ?></p>
-                
-                <div class="material-meta">
-                    <p>Uploaded: <?php echo date('M j, Y', strtotime($material['created_at'])); ?> 
-                       by <?php echo htmlspecialchars($material['teacher_name']); ?></p>
-                    <p>Downloads: <?php echo $material['download_count']; ?> | 
-                       File Type: <?php echo strtoupper($material['file_type']); ?> | 
-                       Size: <?php echo round($material['file_size'] / 1024 / 1024, 2); ?> MB</p>
-                </div>
-            </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
+        <div class="material-part">
+
+
+            <h2>Available Materials (<?php echo count($materials); ?>)</h2>
+            
+            <?php if (empty($materials)): ?>
+                <div class="alert alert-info">No materials found matching your criteria</div>
+                    <?php else: ?>
+                        <div class="material-container">
+                            <?php foreach ($materials as $material): ?>
+                                <div class="material-card">
+                                    <a href="download.php?id=<?php echo $material['id']; ?>" class="btn download-btn">Download</a>
+                                    
+                                    <h3><?php echo htmlspecialchars($material['title']); ?></h3>
+                                    <p><strong><?php echo ucfirst($material['type']); ?> - <?php echo ucfirst($material['subject']); ?></strong></p>
+                                    <p><?php echo htmlspecialchars($material['description']); ?></p>
+                                    
+                                    <div class="material-meta">
+                                        <p>Uploaded: <?php echo date('M j, Y', strtotime($material['created_at'])); ?> 
+                                        by <?php echo htmlspecialchars($material['teacher_name']); ?></p>
+                                        <p>Downloads: <?php echo $material['download_count']; ?> | 
+                                        File Type: <?php echo strtoupper($material['file_type']); ?> | 
+                                        Size: <?php echo round($material['file_size'] / 1024 / 1024, 2); ?> MB</p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+
     </div>
 </body>
+<script>
+  window.addEventListener("scroll", () => {
+    const nav = document.getElementById("dashboard-nav");
+    if (window.scrollY > 10) {
+      nav.classList.add("scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+    }
+  });
+</script>
+
 </html>
