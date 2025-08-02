@@ -1,4 +1,3 @@
-
 <?php
 require_once '../includes/config.php';
 require_once '../includes/functions.php';
@@ -68,34 +67,39 @@ $subjects_list = $subjects_stmt->fetch_all(MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Materials - Catch-Up Corner</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <style>
+    <!-- <style>
         .filter-section {
             background: #f8f9fa;
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 20px;
         }
+
         .filter-group {
             display: inline-block;
             margin-right: 15px;
         }
+
         .material-card {
             position: relative;
             padding: 20px;
             margin-bottom: 15px;
         }
+
         .download-btn {
             position: absolute;
             top: 15px;
             right: 15px;
         }
-    </style>
+    </style> -->
 </head>
+
 <body>
     <div class="dashboard-nav" id="dashboard-nav">
         <div class="nav-title">
@@ -105,17 +109,17 @@ $subjects_list = $subjects_stmt->fetch_all(MYSQLI_ASSOC);
 
         <div class="nav-cont">
             <nav class="nav-links">
-                <a href="#">Home</a>
-                <a href="#">About</a>
-                <a href="#">contact</a>
+                <a href="materials.php">Home</a>
+                <a href="about.php">About</a>
+                <a href="contact.php">contact</a>
             </nav>
             <div class="nav-profile">
                 <img src="../assets/icon/profile.svg" alt="icon" width="16" height="16">
                 <span><?php echo htmlspecialchars($_SESSION['fullname']); ?></span>
                 <span>student</span>
             </div>
-            <a href="../logout.php" class="btn-logout"><object type="image/svg+xml" data="../assets/icon/logout.svg" class="svg-icon" width="16" height="16" ></object>
-Logout</a>
+            <a href="../logout.php" class="btn-logout"><object type="image/svg+xml" data="../assets/icon/logout.svg" class="svg-icon" width="16" height="16"></object>
+                Logout</a>
         </div>
     </div>
 
@@ -123,7 +127,7 @@ Logout</a>
         <div class="dashboard-header-cont">
             <h1>Welcome back, <?php echo htmlspecialchars($_SESSION['fullname']); ?>!</h1>
             <p>Catch up on missed materials and stay on track with your studies</p>
-            
+
         </div>
     </div>
 
@@ -134,16 +138,16 @@ Logout</a>
                 <h3>Find Your Materials</h3>
                 <p>Search and filter through available study materials</p>
             </div>
-            
+
             <div class="filter-section">
                 <form method="GET" action="materials.php">
-                
+
                     <div class="filter-groups">
                         <div class="filter-group">
-                            <input type="text" name="search" placeholder="Search materials..." 
+                            <input type="text" name="search" placeholder="Search materials..."
                                 value="<?php echo htmlspecialchars($search); ?>">
                         </div>
-                        
+
                         <div class="filter-group">
                             <select name="type">
                                 <option value="">All Types</option>
@@ -155,7 +159,7 @@ Logout</a>
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        
+
                         <div class="filter-group">
                             <select name="subject">
                                 <option value="">All Subjects</option>
@@ -169,7 +173,7 @@ Logout</a>
                         </div>
 
                     </div>
-                    
+
                     <button type="submit" class="btn">Apply Filters</button>
                     <?php if (!empty($search) || !empty($type_filter) || !empty($subject_filter)): ?>
                         <a href="materials.php" class="btn btn-outline">Clear Filters</a>
@@ -183,42 +187,42 @@ Logout</a>
 
 
             <h2>Available Materials (<?php echo count($materials); ?>)</h2>
-            
+
             <?php if (empty($materials)): ?>
                 <div class="alert alert-info">No materials found matching your criteria</div>
-                    <?php else: ?>
-                        <div class="material-container">
-                            <?php foreach ($materials as $material): ?>
-                                <div class="material-card">
-                                    <a href="download.php?id=<?php echo $material['id']; ?>" class="btn download-btn">Download</a>
-                                    
-                                    <h3><?php echo htmlspecialchars($material['title']); ?></h3>
-                                    <p><strong><?php echo ucfirst($material['type']); ?> - <?php echo ucfirst($material['subject']); ?></strong></p>
-                                    <p><?php echo htmlspecialchars($material['description']); ?></p>
-                                    
-                                    <div class="material-meta">
-                                        <p>Uploaded: <?php echo date('M j, Y', strtotime($material['created_at'])); ?> 
-                                        by <?php echo htmlspecialchars($material['teacher_name']); ?></p>
-                                        <p>Downloads: <?php echo $material['download_count']; ?> | 
-                                        File Type: <?php echo strtoupper($material['file_type']); ?> | 
-                                        Size: <?php echo round($material['file_size'] / 1024 / 1024, 2); ?> MB</p>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
+            <?php else: ?>
+                <div class="material-container">
+                    <?php foreach ($materials as $material): ?>
+                        <div class="material-card">
+                            <a href="download.php?id=<?php echo $material['id']; ?>" class="btn download-btn">Download</a>
 
-    </div>
+                            <h3><?php echo htmlspecialchars($material['title']); ?></h3>
+                            <p><strong><?php echo ucfirst($material['type']); ?> - <?php echo ucfirst($material['subject']); ?></strong></p>
+                            <p><?php echo htmlspecialchars($material['description']); ?></p>
+
+                            <div class="material-meta">
+                                <p>Uploaded: <?php echo date('M j, Y', strtotime($material['created_at'])); ?>
+                                    by <?php echo htmlspecialchars($material['teacher_name']); ?></p>
+                                <p>Downloads: <?php echo $material['download_count']; ?> |
+                                    File Type: <?php echo strtoupper($material['file_type']); ?> |
+                                    Size: <?php echo round($material['file_size'] / 1024 / 1024, 2); ?> MB</p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
+        </div>
 </body>
 <script>
-  window.addEventListener("scroll", () => {
-    const nav = document.getElementById("dashboard-nav");
-    if (window.scrollY > 10) {
-      nav.classList.add("scrolled");
-    } else {
-      nav.classList.remove("scrolled");
-    }
-  });
+    window.addEventListener("scroll", () => {
+        const nav = document.getElementById("dashboard-nav");
+        if (window.scrollY > 10) {
+            nav.classList.add("scrolled");
+        } else {
+            nav.classList.remove("scrolled");
+        }
+    });
 </script>
 
 </html>

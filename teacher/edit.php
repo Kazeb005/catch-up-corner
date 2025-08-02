@@ -52,6 +52,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
+        <div class="dashboard-nav" id="dashboard-nav">
+        <div class="nav-title">
+            <img src="../assets/icon/book.svg" alt="book icon" height="32" width="32" class="">
+            <span>Catch-Up corner</span>
+        </div>
+
+        <div class="nav-cont">
+            <nav class="nav-links">
+                <a href="materials.php">Home</a>
+                <a href="about.php">About</a>
+                <a href="contact.php">contact</a>
+            </nav>
+            <div class="nav-profile">
+                <img src="../assets/icon/profile.svg" alt="icon" width="16" height="16">
+                <span><?php echo htmlspecialchars($_SESSION['fullname']); ?></span>
+                <span>Teacher</span>
+            </div>
+            <a href="../logout.php" class="btn-logout"><object type="image/svg+xml" data="../assets/icon/logout.svg" class="svg-icon" width="16" height="16"></object>
+                Logout</a>
+        </div>
+    </div>
+
     <div class="dashboard-header">
         <h1>Edit Material</h1>
         <a href="materials.php" class="btn">Back to Materials</a>
