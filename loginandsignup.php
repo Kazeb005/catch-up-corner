@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catch-Up Corner</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <style>
+    <!-- <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f5f7fa;
@@ -120,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .form-hidden {
             display: none;
         }
-    </style>
+    </style> -->
 </head>
 <body>
     <div class="auth-container">
