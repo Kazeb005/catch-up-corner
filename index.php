@@ -19,9 +19,8 @@ if (isLoggedIn()) {
         <h1>Welcome to Catch-Up Corner</h1>
         <p>Access educational materials and stay connected with your studies</p>
         <div class="cta-buttons">
-            <a href="login.php" class="btn">Login</a>
-            <a href="signup.php" class="btn btn-outline">Sign Up</a>
-        </div>
+            <a href="loginandsignup.php?action=login" class="btn">Login</a>
+            <a href="loginandsignup.php" class="btn btn-outline">Sign Up</a>
     </div>
 </body>
 </html>

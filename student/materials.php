@@ -97,10 +97,30 @@ $subjects_list = $subjects_stmt->fetch_all(MYSQLI_ASSOC);
     </style>
 </head>
 <body>
+    <div class="dashboard-nav">
+        <div>
+            <span>Catch-Up corner</span>
+        </div>
+
+        <div>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">contact</a>
+            </nav>
+            <div>
+                <i></i>
+                <span><?php echo htmlspecialchars($_SESSION['fullname']); ?></span>
+                <span>student</span>
+            </div>
+            <button><a href="../logout.php" class="btn">Logout</a></button>
+        </div>
+    </div>
+
     <div class="dashboard-header">
         <h1>Welcome back, <?php echo htmlspecialchars($_SESSION['fullname']); ?>!</h1>
         <p>Catch up on missed materials and stay on track with your studies</p>
-        <a href="../logout.php" class="btn">Logout</a>
+        
     </div>
 
     <div class="dashboard-content">

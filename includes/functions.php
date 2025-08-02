@@ -9,7 +9,7 @@ function isLoggedIn() {
 
 function redirectIfNotLoggedIn() {
     if (!isLoggedIn()) {
-        header("Location: login.php");
+        header("Location: ../loginandsignup.php");
         exit();
     }
 }
@@ -36,7 +36,7 @@ function redirectBasedOnRole() {
             header("Location: /catch-up-corner/dashboard.php");
         } else {
             // Ultimate fallback
-            header("Location: /catch-up-corner/login.php");
+            header("Location: /catch-up-corner/loginandsignup.php");
         }
         exit();
     }

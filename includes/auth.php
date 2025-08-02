@@ -14,12 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Validate inputs
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            header("Location: ../login.php?error=invalidemail");
+            header("Location: loginandsignup.php?action=login&error=invalidemail");
             exit();
         }
         
         if (strlen($password) < 6) {
-            header("Location: ../login.php?error=shortpassword");
+            header("Location: loginandsignup.php?action=login&error=shortpassword");
             exit();
         }
         
@@ -44,17 +44,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['last_activity'] = time();
                 
                 // Redirect based on role
-                 if ($user['role'] === 'teacher') {
-                    header("Location: /catch-up-corner/teacher/materials.php");
+                if ($user['role'] === 'teacher') {
+                    header("Location: teacher/materials.php");
                 } else {
-                    header("Location: /catch-up-corner/student/materials.php");
+                    header("Location: student/materials.php");
                 }
                 exit();
             }
         }
         
         // Login failed
-        header("Location: ../login.php?error=invalidcredentials");
+        header("Location: loginandsignup.php?action=login&error=invalidcredentials");
         exit();
     }
     
@@ -67,22 +67,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Validate inputs
         if (empty($fullname)) {
-            header("Location: ../signup.php?error=emptyfullname");
+            header("Location: loginandsignup.php?error=emptyfullname");
             exit();
         }
         
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            header("Location: ../signup.php?error=invalidemail");
+            header("Location: loginandsignup.php?error=invalidemail");
             exit();
         }
         
         if (strlen($password) < 6) {
-            header("Location: ../signup.php?error=shortpassword");
+            header("Location: loginandsignup.php?error=shortpassword");
             exit();
         }
         
         if (!in_array($role, ['student', 'teacher'])) {
-            header("Location: ../signup.php?error=invalidrole");
+            header("Location: loginandsignup.php?error=invalidrole");
             exit();
         }
         
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $stmt->get_result();
         
         if ($result->num_rows > 0) {
-            header("Location: ../signup.php?error=emailtaken");
+            header("Location: loginandsignup.php?error=emailtaken");
             exit();
         }
         
@@ -116,16 +116,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['last_activity'] = time();
             
             // Redirect based on role
-            redirectBasedOnRole();
+            if ($role === 'teacher') {
+                header("Location: teacher/materials.php");
+            } else {
+                header("Location: student/materials.php");
+            }
             exit();
         } else {
-            header("Location: ../signup.php?error=dberror");
+            header("Location: loginandsignup.php?error=dberror");
             exit();
         }
     }
 }
 
 // If not a POST request or no action specified
-header("Location: ../login.php");
+header("Location: loginandsignup.php");
 exit();
 ?>
