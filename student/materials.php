@@ -49,7 +49,7 @@ if (!empty($subject_filter)) {
 
 $query .= " ORDER BY m.created_at DESC";
 
-// Prepare and execute query
+
 $stmt = $conn->prepare($query);
 
 if (!empty($params)) {
@@ -59,7 +59,7 @@ if (!empty($params)) {
 $stmt->execute();
 $materials = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-// Get unique types and subjects for filters
+
 $types_stmt = $conn->query("SELECT DISTINCT type FROM materials");
 $subjects_stmt = $conn->query("SELECT DISTINCT subject FROM materials");
 $types_list = $types_stmt->fetch_all(MYSQLI_ASSOC);
@@ -174,7 +174,7 @@ $subjects_list = $subjects_stmt->fetch_all(MYSQLI_ASSOC);
 
                     </div>
 
-                    <button type="submit" class="btn">Apply Filters</button>
+                    <button type="submit" class="btn-apply-filters">Apply Filters</button>
                     <?php if (!empty($search) || !empty($type_filter) || !empty($subject_filter)): ?>
                         <a href="materials.php" class="btn btn-outline">Clear Filters</a>
                     <?php endif; ?>
@@ -214,15 +214,6 @@ $subjects_list = $subjects_stmt->fetch_all(MYSQLI_ASSOC);
 
         </div>
 </body>
-<script>
-    window.addEventListener("scroll", () => {
-        const nav = document.getElementById("dashboard-nav");
-        if (window.scrollY > 10) {
-            nav.classList.add("scrolled");
-        } else {
-            nav.classList.remove("scrolled");
-        }
-    });
-</script>
+<script src="../assets/js/"></script>
 
 </html>

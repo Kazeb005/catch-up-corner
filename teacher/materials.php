@@ -158,7 +158,7 @@ $materials = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         </div>
     </div>
 
-       <div class="dashboard-header">
+    <div class="dashboard-header-teacher">
         <div class="dashboard-header-cont">
             <h1>Teacher Dashboard - <?php echo htmlspecialchars($_SESSION['fullname']); ?></h1>
             <p>Manage and upload educational materials for your students</p>
@@ -195,7 +195,7 @@ $materials = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
             <div class="dashboard-content-intro">
                 <h1>Upload New Material</h1>
                 <p>Share resources with your students who missed class</p>
-                <button id="addMaterialBtn" class="btn">+ Add New Material</button>
+                <button id="addMaterialBtn" class="btn-add-material">+ Add New Material</button>
             </div>
         </div>
 
@@ -221,9 +221,9 @@ $materials = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
                     <p>File Type: <?php echo strtoupper($material['file_type']); ?></p>
                 </div>
                 <div class="material-actions">
-                    <a href="edit.php?id=<?php echo $material['id']; ?>" class="btn">Edit</a>
-                    <a href="materials.php?delete=<?php echo $material['id']; ?>" class="btn btn-danger"
-                    onclick="return confirm('Are you sure you want to delete this material?')">Delete</a>
+                    <a href="edit.php?id=<?php echo $material['id']; ?>" class="operation"><img src="../assets/icon/edit.svg" alt="delete" width="24" height="24" ></a>
+                    <a href="materials.php?delete=<?php echo $material['id']; ?>" class="operation btn-danger"
+                    onclick="return confirm('Are you sure you want to delete this material?')"><img src="../assets/icon/delete.svg" alt="delete" width="24" height="24" ></a>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -309,6 +309,7 @@ $materials = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
             }
         }
     </script>
+    <script src="../assets/js/navscroll.js"></script>
 </body>
 
 </html>
