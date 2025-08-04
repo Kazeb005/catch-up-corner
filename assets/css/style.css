@@ -44,16 +44,6 @@ body {
 
 /* login and signup */
 
-
-/* body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f7fa;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0; */
-/* } */
 .auth-container {
     background: white;
     border-radius: 10px;
@@ -178,6 +168,27 @@ body {
     transform: scale(1.03);
 }
 
+.btn-cancel {
+
+    width: 80px;
+    margin: 10px 5px;
+    padding: 12px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.btn-cancel:hover {
+    transform: scale(1.03);
+    background: rgba(255, 0, 0, 0.503);
+}
+
+
 .btn-logout {
     width: 94px;
     height: 36px;
@@ -223,7 +234,7 @@ body {
     transform: scale(1.03);
 }
 
-.btn-add-material{
+.btn-add-material {
     width: 205px;
     margin: 10px 5px;
     padding: 12px;
@@ -241,35 +252,37 @@ body {
     transform: scale(1.03);
 }
 
-.material-actions{
+.material-actions {
     width: 120px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
 }
-.operation{
-    
+
+.operation {
+
     height: 35px;
     width: 35px;
     border-radius: 6px;
     border: 1px solid var(--border);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color:var(--whitish);
+    background-color: var(--whitish);
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
 
 }
 
-.operation:hover{
-    background-color:orange;
+.operation:hover {
+    background-color: orange;
 
 }
-.operation:hover:last-child{
-    background-color:rgb(247, 162, 162);
+
+.operation:hover:last-child {
+    background-color: rgb(247, 162, 162);
 
 }
 
@@ -592,6 +605,48 @@ body {
     border-radius: 8px;
 }
 
+.form-group-modal {
+    display: flex;
+    flex-direction: rows;
+    justify-content: flex-start;
+
+}
+
+.form-group-modal>label {
+    width: 100px;
+}
+
+.form-group-modal>p {
+    align-self: flex-end;
+}
+
+
+.form-group-modal>input,
+.form-group-modal>textarea {
+    margin: 4px 0px 0px 4px;
+    width: 300px;
+    height: 40px;
+    background-color: var(--whitish);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+
+.form-group-modal>select {
+    margin: 4px 0px 0px 4px;
+    width: 305px;
+    height: 40px;
+    background-color: var(--whitish);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+
+.form-group-modal>input:focus,
+.form-group-modal>textarea:focus .form-group-modal>select:focus {
+    outline: none;
+    border: 1px;
+    box-shadow: 0 0 0 1px var(--primary);
+}
+
 .close {
     color: #aaa;
     float: right;
@@ -614,4 +669,58 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+}
+
+
+
+.form-edit {
+    display: none;
+    background: white;
+    border-radius: 10px;
+    border-color: var(--border);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    width: 470px;
+    margin: 50px auto;
+    padding: 5px;
+    overflow: hidden;
+
+}
+
+.form-group-edit {
+    display: flex;
+    flex-direction: rows;
+    justify-content: flex-start;
+
+}
+
+.form-group-edit>label {
+    width: 100px;
+}
+
+
+.form-group-edit>input,
+.form-group-edit>textarea {
+    margin: 4px 0px 0px 4px;
+    width: 300px;
+    height: 40px;
+    background-color: var(--whitish);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+
+.form-group-edit>select {
+    margin: 4px 0px 0px 4px;
+    width: 305px;
+    height: 40px;
+    background-color: var(--whitish);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+
+.form-group-edit>input:focus,
+.form-group-edit>textarea:focus .form-group-edit>select:focus {
+    outline: none;
+    border: 1px;
+    box-shadow: 0 0 0 1px var(--primary);
 }

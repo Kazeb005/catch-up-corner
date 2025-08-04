@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <span class="error-message" id="loginPasswordError"></span>
                 </div>
 
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" class="form-btn">Login</button>
             </form>
 
             <!-- Sign Up Form -->

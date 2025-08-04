@@ -73,31 +73,6 @@ $subjects_list = $subjects_stmt->fetch_all(MYSQLI_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Materials - Catch-Up Corner</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <!-- <style>
-        .filter-section {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .filter-group {
-            display: inline-block;
-            margin-right: 15px;
-        }
-
-        .material-card {
-            position: relative;
-            padding: 20px;
-            margin-bottom: 15px;
-        }
-
-        .download-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-        }
-    </style> -->
 </head>
 
 <body>
