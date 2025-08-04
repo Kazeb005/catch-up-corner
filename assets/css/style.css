@@ -45,7 +45,7 @@ space {
     color: white;
     text-align: center;
     padding: 5rem 1rem;
-    min-height: 60vh;
+    min-height: 72vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -776,5 +776,15 @@ space {
     box-shadow: 0 0 0 1px var(--primary);
 }
 
-
-
+.about{
+    margin-top: 100px;
+}
+.description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.description>h3{
+    font-size: x-large;
+}
