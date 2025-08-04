@@ -65,7 +65,7 @@ $materials = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
             <div class="nav-profile">
                 <img src="../assets/icon/profile.svg" alt="icon" width="16" height="16">
                 <span><?php echo htmlspecialchars($_SESSION['fullname']); ?></span>
-                <span>Teacher</span>
+                <span class="id_teach">Teacher</span>
             </div>
             <a href="../logout.php" class="btn-logout"><object type="image/svg+xml" data="../assets/icon/logout.svg" class="svg-icon" width="16" height="16"></object>
                 Logout</a>

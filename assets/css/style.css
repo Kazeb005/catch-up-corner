@@ -162,7 +162,9 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: transform 0.2s ease;
+    text-decoration: none;
 }
+
 
 .btn:hover {
     transform: scale(1.03);
@@ -216,7 +218,7 @@ body {
 
 }
 
-.btn-apply-filters {
+.btn-apply-filters{
     width: 130px;
     margin: 10px 5px;
     padding: 12px;
@@ -230,7 +232,23 @@ body {
     transition: transform 0.2s ease;
 }
 
-.btn-apply-filters:hover {
+.btn-clear-filters {
+    width: 105px;
+    margin: 10px 5px;
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-apply-filters:hover ,.btn-clear-filters:hover {
     transform: scale(1.03);
 }
 
@@ -425,6 +443,23 @@ body {
     text-decoration: none;
 }
 
+
+.id_teach{
+    padding: 5px;
+    border-radius: 50%;
+    margin-left: 5px;
+    background-color: #51C38E;
+    color: white;
+}
+.id_stu{
+     padding: 5px;
+    border-radius: 50%;
+    margin-left: 5px;
+    background-color: var(--primary);
+    color: white;
+}
+
+
 .dashboard-header {
     width: 100%;
     height: 108px;
@@ -522,7 +557,7 @@ body {
 
 .filter-group>input {
     margin-left: 4px;
-    width: 600px;
+    width: 400px;
     height: 40px;
     background-color: var(--whitish);
     border: 1px solid var(--border);
@@ -544,10 +579,7 @@ body {
     box-shadow: 0 0 0 1px var(--primary);
 }
 
-/* 
-.material-card{
-    
-} */
+
 
 .filter-section {
     background: #f8f9fa;
@@ -647,12 +679,15 @@ body {
     box-shadow: 0 0 0 1px var(--primary);
 }
 
-.close {
+.close , .close-edit {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+}
+.close:hover , .close-edit{
+    color: #dc3545;
 }
 
 

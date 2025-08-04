@@ -91,7 +91,7 @@ $subjects_list = $subjects_stmt->fetch_all(MYSQLI_ASSOC);
             <div class="nav-profile">
                 <img src="../assets/icon/profile.svg" alt="icon" width="16" height="16">
                 <span><?php echo htmlspecialchars($_SESSION['fullname']); ?></span>
-                <span>student</span>
+                <span class="id_stu">student</span>
             </div>
             <a href="../logout.php" class="btn-logout"><object type="image/svg+xml" data="../assets/icon/logout.svg" class="svg-icon" width="16" height="16"></object>
                 Logout</a>
@@ -151,7 +151,7 @@ $subjects_list = $subjects_stmt->fetch_all(MYSQLI_ASSOC);
 
                     <button type="submit" class="btn-apply-filters">Apply Filters</button>
                     <?php if (!empty($search) || !empty($type_filter) || !empty($subject_filter)): ?>
-                        <a href="materials.php" class="btn btn-outline">Clear Filters</a>
+                        <a href="materials.php" class="btn-clear-filters btn-outline">Clear Filters</a>
                     <?php endif; ?>
                 </form>
             </div>
