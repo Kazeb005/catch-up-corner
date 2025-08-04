@@ -9,13 +9,35 @@
     --border: #c2d9ed;
 }
 
-body {
+html, body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--dark);
     background-color: var(--whitish);
     margin: 0;
-    padding: 0;
+    padding: 0;    
+   }
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+/* 
+space {
+    flex: 1; 
+} */
+
+.footer {
+    text-align: center;
+    padding: 8px 0;
+    margin-top: auto;
+    font-size: 12px;
+    color: #555;
+    border-top: 1px solid #eee;
+    background: white;
+    width: 100%;
 }
 
 .hero {
@@ -48,13 +70,13 @@ body {
     background: white;
     border-radius: 10px;
     border-color: var(--border);
-
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     height: 100%;
     width: 470px;
     margin: 50px auto;
     padding: 5px;
     overflow: hidden;
+   
 }
 
 .auth-header {
@@ -519,13 +541,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: white;
-    /* border: 1px  solid var(--border);
-    border-bottom: none;
-    border-radius: 5px 5px 0 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-
-
-}
+    }
 
 .dashboard-content-intro>h3 {
     margin: 0px;
@@ -759,3 +775,6 @@ body {
     border: 1px;
     box-shadow: 0 0 0 1px var(--primary);
 }
+
+
+

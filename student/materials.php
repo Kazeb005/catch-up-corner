@@ -76,6 +76,7 @@ $subjects_list = $subjects_stmt->fetch_all(MYSQLI_ASSOC);
 </head>
 
 <body>
+<header>
     <div class="dashboard-nav" id="dashboard-nav">
         <div class="nav-title">
             <img src="../assets/icon/book.svg" alt="book icon" height="32" width="32" class="">
@@ -97,6 +98,9 @@ $subjects_list = $subjects_stmt->fetch_all(MYSQLI_ASSOC);
                 Logout</a>
         </div>
     </div>
+</header>
+
+<main>
 
     <div class="dashboard-header">
         <div class="dashboard-header-cont">
@@ -105,6 +109,7 @@ $subjects_list = $subjects_stmt->fetch_all(MYSQLI_ASSOC);
 
         </div>
     </div>
+
 
     <div class="dashboard-content">
         <div class="dashboard-content-head">
@@ -188,6 +193,12 @@ $subjects_list = $subjects_stmt->fetch_all(MYSQLI_ASSOC);
             <?php endif; ?>
 
         </div>
+</main>
+
+    
+<footer class="footer">
+    <p>© Catch-Up-Corner 2025</p>
+</footer>
 </body>
 <script src="../assets/js/"></script>
 

@@ -27,73 +27,80 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1>Welcome to Catch-Up Corner</h1>
             <p>Access your educational materials and stay connected</p>
         </div>
+        <main>
 
-        <div class="auth-tabs">
-            <button id="loginTab" class="auth-tab <?php echo $show_login ? 'active' : ''; ?>">Login</button>
-            <button id="signupTab" class="auth-tab <?php echo !$show_login ? 'active' : ''; ?>">Sign Up</button>
-        </div>
+            <div class="auth-tabs">
+                <button id="loginTab" class="auth-tab <?php echo $show_login ? 'active' : ''; ?>">Login</button>
+                <button id="signupTab" class="auth-tab <?php echo !$show_login ? 'active' : ''; ?>">Sign Up</button>
+            </div>
 
-        <div class="auth-forms">
-            <!-- Login Form -->
-            <form id="loginForm" method="POST" action="loginandsignup.php"
-                class="<?php echo $show_login ? 'form-active' : 'form-hidden'; ?>">
-                <input type="hidden" name="login" value="1">
+            <div class="auth-forms">
+                <!-- Login Form -->
+                <form id="loginForm" method="POST" action="loginandsignup.php"
+                    class="<?php echo $show_login ? 'form-active' : 'form-hidden'; ?>">
+                    <input type="hidden" name="login" value="1">
 
-                <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" name="email" class="form-control"
-                        placeholder="your.email@example.com" required>
-                    <span class="error-message" id="loginEmailError"></span>
-                </div>
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" name="email" class="form-control"
+                            placeholder="your.email@example.com" required>
+                        <span class="error-message" id="loginEmailError"></span>
+                    </div>
 
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" name="password" class="form-control"
-                        placeholder="Your password" required>
-                    <span class="error-message" id="loginPasswordError"></span>
-                </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" name="password" class="form-control"
+                            placeholder="Your password" required>
+                        <span class="error-message" id="loginPasswordError"></span>
+                    </div>
 
-                <button type="submit" class="form-btn">Login</button>
-            </form>
+                    <button type="submit" class="form-btn">Login</button>
+                </form>
 
-            <!-- Sign Up Form -->
-            <form id="signupForm" method="POST" action="loginandsignup.php"
-                class="<?php echo !$show_login ? 'form-active' : 'form-hidden'; ?>">
-                <input type="hidden" name="signup" value="1">
+                <!-- Sign Up Form -->
+                <form id="signupForm" method="POST" action="loginandsignup.php"
+                    class="<?php echo !$show_login ? 'form-active' : 'form-hidden'; ?>">
+                    <input type="hidden" name="signup" value="1">
 
-                <div class="form-group">
-                    <label for="signupFullname">Full Name</label>
-                    <input type="text" id="signupFullname" name="fullname" class="form-control"
-                        placeholder="Enter your full name" required>
-                </div>
+                    <div class="form-group">
+                        <label for="signupFullname">Full Name</label>
+                        <input type="text" id="signupFullname" name="fullname" class="form-control"
+                            placeholder="Enter your full name" required>
+                    </div>
 
-                <div class="form-group">
-                    <label for="signupEmail">Email</label>
-                    <input type="email" id="signupEmail" name="email" class="form-control"
-                        placeholder="your.email@example.com" required>
-                    <span class="error-message" id="signupEmailError"></span>
-                </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" name="email" class="form-control"
+                            placeholder="your.email@example.com" required>
+                        <span class="error-message" id="signupEmailError"></span>
+                    </div>
 
-                <div class="form-group">
-                    <label for="signupPassword">Password</label>
-                    <input type="password" id="signupPassword" name="password" class="form-control"
-                        placeholder="Create a password (min. 6 characters)" required>
-                    <span class="error-message" id="signupPasswordError"></span>
-                </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" name="password" class="form-control"
+                            placeholder="Create a password (min. 6 characters)" required>
+                        <span class="error-message" id="signupPasswordError"></span>
+                    </div>
 
-                <div class="form-group">
-                    <label for="signupRole">Role</label>
-                    <select id="signupRole" name="role" class="form-control" required>
-                        <option value="">Select role</option>
-                        <option value="student">Student</option>
-                        <option value="teacher">Teacher</option>
-                    </select>
-                </div>
+                    <div class="form-group">
+                        <label for="signupRole">Role</label>
+                        <select id="signupRole" name="role" class="form-control" required>
+                            <option value="">Select role</option>
+                            <option value="student">Student</option>
+                            <option value="teacher">Teacher</option>
+                        </select>
+                    </div>
 
-                <button type="submit" class="form-btn">Create Account</button>
-            </form>
-        </div>
-    </div>
+                    <button type="submit" class="form-btn">Create Account</button>
+                </form>
+            </div>
+            <div class="space"></div>
+    </div>    
+    </main>
+
+    <footer class="footer">
+        <p>© Catch-Up-Corner 2025</p>
+    </footer>
 
     <script>
         // Tab switching

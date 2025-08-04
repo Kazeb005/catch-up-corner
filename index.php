@@ -22,5 +22,10 @@ if (isLoggedIn()) {
             <a href="loginandsignup.php?action=login" class="btn">Login</a>
             <a href="loginandsignup.php" class="btn btn-outline">Sign Up</a>
     </div>
+    
+<footer class="footer">
+    <p>© Catch-Up-Corner 2025</p>
+</footer>
+
 </body>
 </html>
