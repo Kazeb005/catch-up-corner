@@ -127,63 +127,140 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             loginForm.classList.remove('form-active');
         });
 
-        // Form validation
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            let valid = true;
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
 
-            // Reset errors
-            document.getElementById('loginEmailError').style.display = 'none';
-            document.getElementById('loginPasswordError').style.display = 'none';
+    // Real-time validation functions
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
 
-            // Validate email
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                document.getElementById('loginEmailError').textContent = 'Please enter a valid email address';
-                document.getElementById('loginEmailError').style.display = 'block';
-                valid = false;
-            }
+    function validatePassword(password) {
+        return password.length >= 6;
+    }
 
-            // Validate password
-            if (password.length < 6) {
-                document.getElementById('loginPasswordError').textContent = 'Password must be at least 6 characters';
-                document.getElementById('loginPasswordError').style.display = 'block';
-                valid = false;
-            }
+    // Login form real-time validation
+    const loginEmail = document.getElementById('loginEmail');
+    const loginPassword = document.getElementById('loginPassword');
+    const loginEmailError = document.getElementById('loginEmailError');
+    const loginPasswordError = document.getElementById('loginPasswordError');
 
-            if (!valid) {
-                e.preventDefault();
-            }
-        });
+    loginEmail.addEventListener('input', () => {
+        if (loginEmail.value.length === 0) {
+            loginEmailError.style.display = 'none';
+            return;
+        }
+        if (!validateEmail(loginEmail.value)) {
+            loginEmailError.textContent = 'Please enter a valid email address';
+            loginEmailError.style.display = 'block';
+        } else {
+            loginEmailError.style.display = 'none';
+        }
+    });
 
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
-            let valid = true;
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
+    loginPassword.addEventListener('input', () => {
+        if (loginPassword.value.length === 0) {
+            loginPasswordError.style.display = 'none';
+            return;
+        }
+        if (!validatePassword(loginPassword.value)) {
+            loginPasswordError.textContent = 'Password must be at least 6 characters';
+            loginPasswordError.style.display = 'block';
+        } else {
+            loginPasswordError.style.display = 'none';
+        }
+    });
 
-            // Reset errors
-            document.getElementById('signupEmailError').style.display = 'none';
-            document.getElementById('signupPasswordError').style.display = 'none';
+    // Signup form real-time validation
+    const signupEmail = document.getElementById('signupEmail');
+    const signupPassword = document.getElementById('signupPassword');
+    const signupEmailError = document.getElementById('signupEmailError');
+    const signupPasswordError = document.getElementById('signupPasswordError');
 
-            // Validate email
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                document.getElementById('signupEmailError').textContent = 'Please enter a valid email address';
-                document.getElementById('signupEmailError').style.display = 'block';
-                valid = false;
-            }
+    signupEmail.addEventListener('input', () => {
+        if (signupEmail.value.length === 0) {
+            signupEmailError.style.display = 'none';
+            return;
+        }
+        if (!validateEmail(signupEmail.value)) {
+            signupEmailError.textContent = 'Please enter a valid email address';
+            signupEmailError.style.display = 'block';
+        } else {
+            signupEmailError.style.display = 'none';
+        }
+    });
 
-            // Validate password
-            if (password.length < 6) {
-                document.getElementById('signupPasswordError').textContent = 'Password must be at least 6 characters';
-                document.getElementById('signupPasswordError').style.display = 'block';
-                valid = false;
-            }
+    signupPassword.addEventListener('input', () => {
+        if (signupPassword.value.length === 0) {
+            signupPasswordError.style.display = 'none';
+            return;
+        }
+        if (!validatePassword(signupPassword.value)) {
+            signupPasswordError.textContent = 'Password must be at least 6 characters';
+            signupPasswordError.style.display = 'block';
+        } else {
+            signupPasswordError.style.display = 'none';
+        }
+    });
 
-            if (!valid) {
-                e.preventDefault();
-            }
-        });
+    // Form submission validation (unchanged)
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        let valid = true;
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+
+        // Reset errors
+        document.getElementById('loginEmailError').style.display = 'none';
+        document.getElementById('loginPasswordError').style.display = 'none';
+
+        // Validate email
+        if (!validateEmail(email)) {
+            document.getElementById('loginEmailError').textContent = 'Please enter a valid email address';
+            document.getElementById('loginEmailError').style.display = 'block';
+            valid = false;
+        }
+
+        // Validate password
+        if (password.length < 6) {
+            document.getElementById('loginPasswordError').textContent = 'Password must be at least 6 characters';
+            document.getElementById('loginPasswordError').style.display = 'block';
+            valid = false;
+        }
+
+        if (!valid) {
+            e.preventDefault();
+        }
+    });
+
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+        let valid = true;
+        const email = document.getElementById('signupEmail').value;
+        const password = document.getElementById('signupPassword').value;
+
+        // Reset errors
+        document.getElementById('signupEmailError').style.display = 'none';
+        document.getElementById('signupPasswordError').style.display = 'none';
+
+        // Validate email
+        if (!validateEmail(email)) {
+            document.getElementById('signupEmailError').textContent = 'Please enter a valid email address';
+            document.getElementById('signupEmailError').style.display = 'block';
+            valid = false;
+        }
+
+        // Validate password
+        if (password.length < 6) {
+            document.getElementById('signupPasswordError').textContent = 'Password must be at least 6 characters';
+            document.getElementById('signupPasswordError').style.display = 'block';
+            valid = false;
+        }
+
+        if (!valid) {
+            e.preventDefault();
+        }
+    });
+</script>
     </script>
+    <script src="../assets/js/script.js"></script>
 </body>
 
 </html>
